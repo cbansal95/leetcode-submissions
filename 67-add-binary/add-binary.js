@@ -27,7 +27,6 @@ var addBinary = function(a, b) {
         } else if(carry == '0') {
             curr = '1'
         }
-        console.log(carry,a2,b2)
         fin = `${curr}${fin}`
     }
     return fin
