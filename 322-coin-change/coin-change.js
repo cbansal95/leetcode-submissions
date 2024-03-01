@@ -13,6 +13,5 @@ var coinChange = function(coins, amount) {
             }
         }
     }
-    console.log(dp)
     if(dp[amount] == amount +1) return -1; else return dp[amount]
 };
