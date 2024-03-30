@@ -14,7 +14,6 @@ var canFinish = function (numCourses, prerequisites) {
             courses[prereq[0]].push(prereq[1])
         }
     }
-    console.log(courses)
     for (let course of Object.keys(courses)) {
         if (dfs(course)) return false
     }
@@ -22,7 +21,6 @@ var canFinish = function (numCourses, prerequisites) {
         visiting[course] = true
 
         let preqs = courses[course]
-        console.log(preqs)
         if (!preqs || preqs == undefined || preqs == []) {
             visited[course] = true
             visiting[course] = false
@@ -38,6 +36,5 @@ var canFinish = function (numCourses, prerequisites) {
         delete visiting[course]
         return false
     }
-    console.log(visited, visiting, courses)
     return true
 };
