@@ -24,7 +24,6 @@ var countSubarrays = function (nums, k) {
             }
             l++
         }
-        console.log(l,r)
         out += l
     }
     return out
