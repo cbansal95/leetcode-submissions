@@ -12,7 +12,6 @@ var findOrder = function(numCourses, prerequisites) {
     for(let prereq of prerequisites){
         obj[prereq[0]].push(prereq[1])
     }
-    console.log(obj)
     for(let course of Object.keys(obj)){
         if (dfs(course)){return []}
     }
