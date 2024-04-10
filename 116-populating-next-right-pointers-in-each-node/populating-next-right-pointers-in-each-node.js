@@ -19,14 +19,12 @@ var connect = function (root) {
         let nextQ = []
         while (queue.length) {
             let curr = queue.shift()
+            curr.next = queue[0]||null
             if (curr && curr.left && curr.right) {
                 nextQ.push(curr.left)
                 nextQ.push(curr.right)
             }
 
-        }
-        for(let i = 0; i< nextQ.length - 1; i++){
-            nextQ[i].next = nextQ[i+1]
         }
         queue = nextQ
     }
