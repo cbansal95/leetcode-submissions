@@ -1,0 +1,34 @@
+/**
+ * // Definition for a Node.
+ * function Node(val, left, right, next) {
+ *    this.val = val === undefined ? null : val;
+ *    this.left = left === undefined ? null : left;
+ *    this.right = right === undefined ? null : right;
+ *    this.next = next === undefined ? null : next;
+ * };
+ */
+
+/**
+ * @param {Node} root
+ * @return {Node}
+ */
+var connect = function (root) {
+    if (!root) return root
+    let queue = [root]
+    while (queue.length) {
+        let nextQ = []
+        while (queue.length) {
+            let curr = queue.shift()
+            if (curr && curr.left && curr.right) {
+                nextQ.push(curr.left)
+                nextQ.push(curr.right)
+            }
+
+        }
+        for(let i = 0; i< nextQ.length - 1; i++){
+            nextQ[i].next = nextQ[i+1]
+        }
+        queue = nextQ
+    }
+    return root
+};
