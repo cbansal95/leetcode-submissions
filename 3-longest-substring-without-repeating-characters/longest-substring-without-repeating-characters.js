@@ -2,28 +2,41 @@
  * @param {string} s
  * @return {number}
  */
-var lengthOfLongestSubstring = function(s) {
-    if(s.length == 0) return 0
-    let obj = {}
-    let length = 1, maxlen = 1
-    let p1 = 0, p2 = 1
+var lengthOfLongestSubstring1 = function (s) {
 
-    obj[s[p1]] = true
-
-    while(p2 < s.length){
-        if(obj[s[p2]]) {
-            obj = {}
-            length = 1
-            p1++
-            p2 = p1 + 1
-            obj[s[p1]] = true
+    if (s.length == 1 || s.length == 0) return s.length
+    let start = 0, end = 1, max = 1
+    let map = {}
+    map[s[0]] = 0
+    while (end < s.length) {
+        if (map[s[end]] == undefined) {
+            map[s[end]] = end
+            let temp = Object.keys(map).length
+            if (temp > max) max = temp
+            end++
         } else {
-            obj[s[p2]] = true
-            p2++
-            length++
-            if(length > maxlen) maxlen = length
+            start = map[s[end]] + 1
+            end = start + 1
+            map = {}
+            map[s[start]] = start
         }
     }
-    console.log(maxlen)
-    return maxlen
+    return max
+};
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring = function(s) {
+    let ans = 0;
+    let count = new Array(256).fill(0);
+    for (let i = 0, j = 0; i < s.length; i++) {
+        count[s.charCodeAt(i)]++;
+        while (count[s.charCodeAt(i)] > 1) {
+            count[s.charCodeAt(j++)]--;
+        }
+        ans = Math.max(ans, i - j + 1);
+    }
+    return ans;
 };
