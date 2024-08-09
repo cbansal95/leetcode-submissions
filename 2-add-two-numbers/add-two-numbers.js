@@ -11,7 +11,6 @@
  * @return {ListNode}
  */
 var addTwoNumbers = function(l1, l2, carry = 0) {
-    console.log(l1,l2,carry)
     if(l1 == undefined && l2 == undefined && carry == 0) return null
     n1 = (l1 && l1.val) ? l1.val : 0
     n2 = (l2 && l2.val) ? l2.val : 0
@@ -26,7 +25,3 @@ var addTwoNumbers = function(l1, l2, carry = 0) {
         return new ListNode(currSum%10, addTwoNumbers(undefined, undefined, Math.floor(currSum/10)))
     }
 };
-
-var addTwo = function(l1, l2, carry) {
-
-}
