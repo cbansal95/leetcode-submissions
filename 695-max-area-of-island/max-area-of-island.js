@@ -29,7 +29,6 @@ var maxAreaOfIsland = function (grid) {
                 visited[`${index[0]}_${index[1]}`] = true
             }
         }
-        console.log(stack)
         count += stack.length
         while (stack.length) {
             let index = stack.pop()
