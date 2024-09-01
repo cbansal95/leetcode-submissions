@@ -26,7 +26,6 @@ class Solution:
                 return [[str(root.val)]]
             return out
         temp = dfs(root)
-        print(temp)
         for path in temp:
             if(len(path) == 1): output.append(str(path[0]))
             else:
