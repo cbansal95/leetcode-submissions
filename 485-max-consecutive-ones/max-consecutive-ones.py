@@ -4,7 +4,8 @@ class Solution:
         for i in nums:
             if i == 1:
                 count+=1
-                maxN = max(count,maxN)
             else:
+                maxN = max(count,maxN)
                 count = 0
-        return maxN
+        
+        return max(count,maxN)
