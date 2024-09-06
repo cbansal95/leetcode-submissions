@@ -8,7 +8,6 @@ class Solution:
                 freq[char] = 0
             freq[char]+=1
             chars.add(char)
-        print(freq)
         for char in chars:
             if freq[char]%2 == 0:
                 out+=freq[char]
