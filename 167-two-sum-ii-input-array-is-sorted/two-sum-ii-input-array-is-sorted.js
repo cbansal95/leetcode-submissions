@@ -5,7 +5,6 @@
  */
 var twoSum = function(numbers, target) {
     const numMap = {}
-    const output = []
     let i = 0
     while(i < numbers.length) {
         if(numMap[target - numbers[i]] !== undefined) {
