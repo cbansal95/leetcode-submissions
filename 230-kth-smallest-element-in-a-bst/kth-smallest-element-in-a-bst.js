@@ -12,13 +12,17 @@
  * @return {number}
  */
 var kthSmallest = function(root, k) {
-    let arr = []
-  const dfs =(root)=>{
-      if(root == null) return null
-      if(arr.length <= k){dfs(root.left)
-      arr.push(root.val)
-      dfs(root.right)}
-  }
-  dfs(root)
-  return arr[k-1]
+    const arr = []
+    const dfs = (root)=>{
+        if(!root) return null
+        if (root.left){
+            dfs(root.left)
+        }
+        arr.push(root.val)
+        if (root.right) {
+            dfs(root.right)
+        }
+    }
+    dfs(root)
+    return arr[k-1]
 };
