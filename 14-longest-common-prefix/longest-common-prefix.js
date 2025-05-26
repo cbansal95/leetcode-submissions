@@ -1,70 +1,51 @@
+
+class TrieNode{
+    constructor(){
+        this.children = {}
+        this.eow = false
+    }
+}
+
+class Trie{
+    constructor(){
+        this.root = new TrieNode()
+    }
+    insertWord(word){
+        let curr = this.root
+
+        for(const c of word){
+            if (curr.children[c] == undefined) {
+                const newNode =  new TrieNode()
+                curr.children[c] = newNode
+                curr = newNode
+            } else {
+                curr = curr.children[c]
+            }
+        }
+
+        curr.eow = true
+    }
+
+    longestPrefix(){
+        let prefix = ""
+        let curr = this.root
+        while(Object.keys(curr.children).length == 1 && curr.eow == false){
+            prefix = prefix+Object.keys(curr.children)[0]
+            curr = curr.children[Object.keys(curr.children)[0]]
+        }
+        return prefix
+    }
+}
+
 /**
  * @param {string[]} strs
  * @return {string}
  */
-var longestCommonPrefix = function (strs) {
-    class TrieNode {
-        constructor(end = false) {
-            //this.key = key
-            this.children = {}
-            this.end = end
-        }
+var longestCommonPrefix = function(strs) {
+    const newTrie = new Trie()
+    for(const str of strs){
+        if (str == "") return "";
+        newTrie.insertWord(str)
     }
-
-    class Trie {
-        constructor() {
-            this.root = new TrieNode()
-        }
-
-        insert(word) {
-            let curr = this.root
-
-            word.split('').forEach(char => {
-                if (!(char in curr.children))
-                    curr.children[char] = new TrieNode()
-                curr = curr.children[char]
-            });
-            curr.end = true
-
-        }
-        search(word) {
-            let curr = this.root
-            word.split('').forEach((char, i) => {
-                if (!(char in curr.children)) {
-                    return false
-                } else {
-                    curr = curr.children[char]
-                }
-            })
-            return curr.end
-        }
-        startsWith(word) {
-            let curr = this.root
-            word.split('').forEach((char, i) => {
-                if (!(char in curr.children)) {
-                    return false
-                } else {
-                    curr = curr.children[char]
-                }
-            })
-            return true
-        }
-    }
-
-    const trie = new Trie()
-
-    let check = false
-    strs.forEach(str => {
-        if(str=="") check = true
-        trie.insert(str)
-    })
-    if(check) return ""
-    let curr = trie.root
-    let prefix = ''
-    while (Object.keys(curr.children).length == 1) {
-        if(curr.end == true) break
-        prefix = prefix.concat(Object.keys(curr.children)[0])
-        curr = curr.children[Object.keys(curr.children)[0]]
-    }
-    return prefix
+    return newTrie.longestPrefix()
 };
