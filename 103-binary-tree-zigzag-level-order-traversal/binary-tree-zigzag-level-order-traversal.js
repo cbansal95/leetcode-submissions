@@ -23,7 +23,6 @@ var zigzagLevelOrder = function(root) {
             if(curr.left) nextNodes.push(curr.left)
             if(curr.right) nextNodes.push(curr.right)
         }
-        console.log(temp)
         if(flag){
             output.push(temp)
         } else {
