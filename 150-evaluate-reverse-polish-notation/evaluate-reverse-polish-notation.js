@@ -6,7 +6,6 @@ var evalRPN = function(tokens) {
     let stack = []
 
     for (const t of tokens){
-        console.log(t)
         if (t == "+"){
             stack.push(stack.pop() + stack.pop())
         }
@@ -29,7 +28,6 @@ var evalRPN = function(tokens) {
         else {
             stack.push(Number(t))
         }
-        console.log(stack)
     }
     return stack[0]
 };
