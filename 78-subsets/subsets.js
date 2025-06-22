@@ -3,14 +3,18 @@
  * @return {number[][]}
  */
 var subsets = function(nums) {
-    let res = [[]]
-
-    for(let num of nums){
-        let temp = []
-        for(r of res){
-            temp.push([...r, num])
+    const output = []
+    function createSubset(i, subset){
+        if(i == nums.length){
+            output.push(subset.slice())
+            return
         }
-        res = [...res,...temp]
+
+        subset.push(nums[i])
+        createSubset(i+1, subset)
+        subset.pop()
+        createSubset(i+1,subset)
     }
-    return res
+    createSubset(0, [])
+    return output
 };
