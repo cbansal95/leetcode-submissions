@@ -13,7 +13,6 @@ var minMutation = function(startGene, endGene, bank) {
     function bfs(start){
         const stack = [[start, 0]]
         while(stack.length){
-            console.log(stack)
             let [currGene, currMutations] = stack.pop()
             if (currGene == endGene) {
                 if(minSol == -1 || currMutations < minSol) minSol = currMutations
@@ -29,9 +28,6 @@ var minMutation = function(startGene, endGene, bank) {
                     }
                 }
             }
-            // generate mutations
-            // validate mutation
-            // push to stack
         }
     }
     bfs(startGene)
