@@ -41,7 +41,6 @@ var addTwoNumbers = function(l1, l2) {
         }
         stack3.push(sum)
     }
-    console.log(stack3)
     let out = new ListNode(0)
     curr = out
     while(stack3.length){
