@@ -15,12 +15,10 @@ var deleteMiddle = function(head) {
     prev.next = head
     let slow = prev
     let fast = head
-
-    while(fast != null && fast.next != null) {
+    while(fast && fast.next){
         slow = slow.next
         fast = fast.next.next
     }
     slow.next = slow.next.next
     return prev.next
-
 };
