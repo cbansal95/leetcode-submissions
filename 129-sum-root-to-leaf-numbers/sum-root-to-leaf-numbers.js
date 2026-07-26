@@ -17,7 +17,6 @@ var sumNumbers = function(root) {
     let base = root.val.toString()
     arr.push(...test(base,root.left))
     arr.push(...test(base,root.right))
-    console.log(arr)
     for(const a of arr){
         sum+=Number(a) 
     }
