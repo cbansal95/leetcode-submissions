@@ -10,15 +10,19 @@
  * @param {TreeNode} root
  * @return {boolean}
  */
-var isSymmetric = function(root) {
-    if (!root) return true    
-    return isSame(root.left, root.right)
-};
 
-var isSame = function(left, right) {
-    if (left == null && right == null) return true;
-    if (left == null || right == null) return false;
-    if (left.val !== right.val) return false;
-
-    return isSame(left.left, right.right) && isSame(left.right, right.left)
+function compareFunc(a,b){
+    if(!a && !b) return true
+    try {
+        if(a.val != b.val) return false
+    } catch {
+        return false
+    }
+    
+    return (compareFunc(a.right, b.left) && compareFunc(a.left,b.right))
 }
+var isSymmetric = function(root) {
+    if(!root) return true
+    if(!root.left && !root.right) return true
+    return compareFunc(root.right, root.left)
+};
