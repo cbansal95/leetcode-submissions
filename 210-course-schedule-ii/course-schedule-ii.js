@@ -21,9 +21,7 @@ var findOrder = function(numCourses, prerequisites) {
         if(completed[course]) return true
         if(pending[course]) return false
         pending[course] = true
-
-        const courses = adj[course] || []
-        for(const c of courses){
+        for(const c of adj[course]){
             if(dfs(c) == false) return false
         }
         delete pending[course]
